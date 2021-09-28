@@ -12,5 +12,5 @@ Our semester-long project for CS1520: Web Programming
 ## Goals:
 * Create communities of like-minded individuals (similar to subreddits)
 * Give users a way to make friends through shared experiences/interests
-* Media site that feels more personable
+* Social Media site that feels more personable
 
