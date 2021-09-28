@@ -1,0 +1,61 @@
+body {
+    background-color: #3FA0EF;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+    /*
+    background-color: #3f37c9;
+    */
+}
+
+nav {
+    width: 100%;
+    height: 10px;
+    float: left;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 70px;
+    padding: 0px 20px;
+    position: relative;
+  }
+
+nav a {
+    font-size: 24px;
+    text-decoration: none;
+    font-family: 'Arvo', serif;
+    font-weight: 800;
+    color: whitesmoke;
+}
+
+nav a:hover{
+    color: #9bb9b9;
+}
+
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #FEECD4;
+  
+    position: absolute;
+    top: 0;
+    width: 0%;
+  
+    transition: all ease-in-out 250ms;
+  }
+  
+  nav a:hover::before {
+    width: 100%;
+  }
+  
+/*
+html {
+    font-family: 'Arvo', serif;
+    background-color: #edf6f9;
+}
+*/
