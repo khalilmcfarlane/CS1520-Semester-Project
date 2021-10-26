@@ -4,5 +4,8 @@ handlers:
 - url: /s
   static_dir: static_files
 
+- url: /scripts
+  static_dir: static_files/scripts
+  
 - url: /.*
   script: auto
