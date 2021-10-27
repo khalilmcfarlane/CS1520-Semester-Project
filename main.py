@@ -23,7 +23,7 @@ def fetch_entity():
 def root():
     return flask.redirect("/s/index.html", code=302)
 
-@app.route('/login', methods=["GET", "POST"])
+@app.route('/login', methods=['GET', 'POST'])
 def login():
     if "username" in flask.session:
         pass
@@ -35,7 +35,7 @@ def login():
             #return redirect to profile
     return flask.render_template("/s/login.html")
 
-@app.route('/signup', methods=["GET", "POST"])
+@app.route('/signup', methods=['GET', 'POST'])
 def signup():
     return flask.render_template("/s/signup.html")
 
