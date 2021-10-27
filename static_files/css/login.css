@@ -2,13 +2,17 @@ html {
     height: 100%;
   }
 
+nav {
+    display: flex;
+    position: fixed;
+    top:0;
+    width: 100%;
+}
+
   nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    /*
-    background-color: #3f37c9;
-    */
 }
 
 nav {
@@ -62,6 +66,10 @@ nav a::before {
     justify-items: center;
     align-items: center;
     background-color: #61A9FA;
+  }
+
+  #login-header {
+    font-size: 50px;
   }
   
   #main-holder {
@@ -127,7 +135,7 @@ nav a::before {
     border-radius: 5px;
     color: white;
     font-weight: bold;
-    background-color: #3a3a3a;
+    background-color: #61A9FA;
     cursor: pointer;
     outline: none;
   }
