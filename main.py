@@ -10,7 +10,7 @@ client = datastore.Client()
     Stores username/password via flask in cloud datastore.
     More reliable than JS, which is easy to change the source code.
     Will use in signup()
-'''
+
 def store_entity(username, password):
     key = client.key('User', username)
     entity = datastore.Entity(key=key)
@@ -20,19 +20,19 @@ def store_entity(username, password):
     client.put(entity)
 
 
-'''
+
     Retrieves stored entity.
     Useful in testing in user verification during login
-'''
+
 def fetch_entity():
     query=client.query(kind='User')
     results = list(query)
     return results
-
+'''
 @app.route('/')
 def root():
     return flask.redirect("/s/index.html", code=302)
-
+'''
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     if "username" in flask.session:
@@ -53,6 +53,6 @@ def signup():
     if flask.request.method == "POST":
         store_entity(flask.request.form["username"], flask.request.form["password"])        
     return flask.render_template("/s/signup.html")
-
+'''
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
