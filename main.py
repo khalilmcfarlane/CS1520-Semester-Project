@@ -1,6 +1,4 @@
 import flask
-from flask import url_for
-from flask.globals import request
 from google.cloud import datastore
 
 app = flask.Flask(__name__)
