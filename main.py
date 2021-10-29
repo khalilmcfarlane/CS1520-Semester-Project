@@ -1,7 +1,9 @@
 import flask
-
+from google.cloud import datastore
 
 app = flask.Flask(__name__)
+client = datastore.Client()
+
 
 @app.route('/')
 def root():
