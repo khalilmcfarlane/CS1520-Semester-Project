@@ -23,7 +23,7 @@ class User_manager():
             user = entity
         return user
 
-    def register(self, username, password):
+    def register(self, username, password, age, city, major, school):
         """Register a new user"""
         user = self.find_user(username)
         if user is not None:
@@ -32,12 +32,10 @@ class User_manager():
         user = create_user()
         user['username'] = username
         user['password'] = password
-        # these user fields can be added later
-        # user['name'] = name
-        # user['age'] = age
-        # user['email'] = email
-        # user['location'] = location
-        # user['bio'] = bio
+        user['age'] = age
+        user['city'] = city
+        user['major'] = major
+        user['school'] = school
         client = get_client()
         client.put(user)
         #add check for when username is satisfied
@@ -48,14 +46,7 @@ class User_manager():
         if user == None:
             return "User Not Found"
 
-        if user['password'] == password:
-            return "Log In Succeeded"
-        else:
+        if user['password'] != password:
             return "Wrong Password"
-
-
-
-
         
-
-    
+        return user
