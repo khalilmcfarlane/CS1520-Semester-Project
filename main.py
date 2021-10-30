@@ -17,9 +17,13 @@ def root():
 def register_user():
     username = flask.request.form['username']
     password = flask.request.form['password']
-    um.register(username, password) # register the new user
+    age = flask.request.form['age']
+    city = flask.request.form['city']
+    major = flask.request.form['major']
+    school = flask.request.form['school']
+    um.register(username, password, age, city, major, school) # register the new user
     print("registered username", username)
-    return flask.render_template("profile.html", username = username)
+    return flask.render_template("profile.html", username = username, age = age, city = city, major = major, school = school)
 
 @app.route('/login', methods=['POST','GET'])
 def login():
@@ -28,10 +32,13 @@ def login():
     response = um.login(username, password) # register the new user
     print(response)
     if response == "User Not Found" or response == "Wrong Password":
-        print("yo")
         error = "User Not Found"
         return flask.render_template('error.html', error=error)
-    return flask.render_template("profile.html", username = username)
+    age = response['age'] 
+    city = response['city'] 
+    major = response['major'] 
+    school = response['school']
+    return flask.render_template("profile.html", username = username, age = age, city = city, major = major, school = school)
 
 
 if __name__ == '__main__':
