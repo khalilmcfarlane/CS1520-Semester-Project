@@ -15,9 +15,9 @@ class User_manager():
         client = get_client()
         query = client.query(kind = 'user')
         query.add_filter("username", "=", username) # find the specified username 
-
-        if query.fetch.asList.size() == 0:
-            return None
+        user = None
+        # if query.fetch.asList.size() == 0:
+        #     return None
 
         for entity in query.fetch():
             user = entity
