@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <title>Profile</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="s/css/style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    </head>
+    <body>
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td>{{username}}</td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td>{{age}}</td>
+            </tr>
+            <tr>
+                <td>The School You Attend:</td>
+                <td>{{school}}</td>
+            </tr>
+            <tr>
+                <td>City: </td>
+                <td>{{city}}</td>
+            </tr>
+            <tr>
+                <td>Major:</td>
+                <td>{{major}}</td>
+            </tr>
+        </table>
+
+        <h2>Create Post</h2>
+
+            <form action="/action_page.php">
+                <label for="fname">Post Title:</label><br>
+                <input type="text" id="PostTitle" name="fname" value=""><br>
+                <label for="Post">Post:</label><br>
+                
+                <textarea id="userPost" name="Post" rows="10" cols="50">
+                </textarea>
+                <br>
+                <input type="submit" value="Submit">
+            </form> 
+
+            <p>If you click the "Submit" button, the post will be sent to a page called "/action_page.php".</p>
+
+            <div class="dropdown">
+            <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+            <div id="myDropdown" class="dropdown-content">
+                <input type="text" placeholder="Search.." id="myInput" onkeyup="filterFunction()">
+                <a href="#Sports">Sports</a>
+                <a href="#Art">Art</a>
+                <a href="#Media">Media</a>
+                <a href="#Food">Food</a>
+                <a href="#School">School</a>
+                <a href="#News">News</a>
+                <a href="#Other">Other</a>
+            </div>
+            </div>
+
+            
+
+    </body>
+</html>
