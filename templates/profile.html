@@ -7,15 +7,27 @@
         <link rel="stylesheet" href="s/css/style.css">
     </head>
     <body>
-        <nav>
-            <div style = "position:absolute; left:100px; top:20px; background-color:rgb(0, 89, 255);font-size: 25px">
-                Welcome {{ username }} 
-            </div>
-        </nav>
-        <nav>
-            <div style = "position:absolute; right:100px; top:20px; background-color:rgb(0, 89, 255);">
-                <a href="s/login.html" target="_blank">Sign Out</a>
-            </div>
-        </nav>
+        <table>
+            <tr>
+                <td>Username:</td>
+                <td>{{username}}</td>
+            </tr>
+            <tr>
+                <td>Age:</td>
+                <td>{{age}}</td>
+            </tr>
+            <tr>
+                <td>The School You Attend:</td>
+                <td>{{school}}</td>
+            </tr>
+            <tr>
+                <td>City: </td>
+                <td>{{city}}</td>
+            </tr>
+            <tr>
+                <td>Major:</td>
+                <td>{{major}}</td>
+            </tr>
+        </table>
     </body>
 </html>
