@@ -38,18 +38,15 @@
                     </div>
                 </div>
                 -->
-                {% block content %}
 
                <form method="post">
-                <input type="text" class="title" name="title" placeholder="Blog title" value="{{ flask.request.form['title'] }}"/>
-                <textarea name="content" class="article" placeholder="Start writing here">{{flask.request.form['article']}}</textarea>
+                <input type="text" class="title" name="title" placeholder="Blog title" />
+                <textarea name="content" class="article" placeholder="Start writing here"></textarea>
                 <div class="post-options">
                     <button type="submit" class="post_button">Post</button>
                 </div>
                 <div class="replies">Replies</div>
                </form>
-               {% endblock %}
-
               
             </div>
         </div>
