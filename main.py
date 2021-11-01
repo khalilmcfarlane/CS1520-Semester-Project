@@ -40,6 +40,19 @@ def login():
     school = response['school']
     return flask.render_template("profile.html", username = username, age = age, city = city, major = major, school = school)
 
+@app.route('/create', methods=('GET', 'POST'))
+def create_post():
+    if flask.request.method == 'POST':
+        title = flask.request.form['title']
+        article = flask.request.form['article']
+
+        if not title:
+            flash('Title is required!')
+        # else store into datastore
+        return flask.redirect(url_for('root'))
+
+    return flask.render_template("createpost.html")
+
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)

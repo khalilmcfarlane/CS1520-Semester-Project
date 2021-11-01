@@ -9,6 +9,7 @@
         <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon_io/favicon-32x32.png">
         <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon_io/favicon-16x16.png">
         <link rel="manifest" href="./images/favicon_io/site.webmanifest">
+        <script src="./js/select_subject.js"></script>
     </head>
     <body>
         <nav>
@@ -18,8 +19,39 @@
                 <li><a class="signup" href="signup.html">Sign Up</a></li>
             </ul>
         </nav>
-        <div id="create_post">
-            
+        
+        <div class="post">
+            <div class="post_header">
+                <!--
+                     <div class="subject">Subject</div>
+                    <button onclick="selectSubject()" class="dropbtn"> </button>
+                    <div id="subjectList" class="dropdown_content"> 
+                        <ul> 
+                            <li<p>Sports</p></li>
+                            <li><p>News</p></li>
+                            <li><p>Art</p></li>
+                            <li><p>Food</p></li>
+                            <li><p>Media</p></li>
+                            <li<p>School</p></li>
+                            <li<p>Other</p></li>
+                        </ul>
+                    </div>
+                </div>
+                -->
+                {% block content %}
+
+               <form method="post">
+                <input type="text" class="title" name="title" placeholder="Blog title" value="{{ flask.request.form['title'] }}"/>
+                <textarea name="content" class="article" placeholder="Start writing here">{{flask.request.form['article']}}</textarea>
+                <div class="post-options">
+                    <button type="submit" class="post_button">Post</button>
+                </div>
+                <div class="replies">Replies</div>
+               </form>
+               {% endblock %}
+
+              
+            </div>
         </div>
     </body>
 </html>
