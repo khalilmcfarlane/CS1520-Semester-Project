@@ -8,7 +8,7 @@ handlers:
   static_dir: static_files/js
   
 - url: /favicon.ico
-  static_dir: static_files/images/favicon_io/favicon-32x32.png
+  static_files: static_files/images/favicon_io/favicon-32x32.png
   upload: static_files/images/favicon_io/favicon-32x32.png
 
 - url: /.*
