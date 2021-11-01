@@ -5,7 +5,10 @@ handlers:
   static_dir: static_files
 
 - url: /scripts
-  static_dir: static_files/scripts
+  static_dir: static_files/js
+  
+- url: /favicon.ico
+  static_dir: static_files/images/favicon_ico
   
 - url: /.*
   script: auto
