@@ -40,8 +40,8 @@
                 -->
 
                <form method="post">
-                <input type="text" class="title" name="title" placeholder="Blog title" />
-                <textarea name="content" class="article" placeholder="Start writing here"></textarea>
+                <input type="text" class="title" name="title" placeholder="Blog title" value="{{ form.title }}"/>
+                <textarea name="content" class="article" placeholder="Start writing here"> {{ form.article }}</textarea>
                 <div class="post-options">
                     <button type="submit" class="post_button">Post</button>
                 </div>
