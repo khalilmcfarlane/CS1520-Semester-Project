@@ -39,9 +39,9 @@
                 </div>
                 -->
 
-               <form method="post">
-                <input type="text" class="title" name="title" placeholder="Blog title" value="{{ form.title }}"/>
-                <textarea name="content" class="article" placeholder="Start writing here"> {{ form.article }}</textarea>
+               <form method="post" name="post_form">
+                <input type="text" class="title" name="title" placeholder="Blog title"/>
+                <input name="content" class="article" placeholder="Start writing here"/>
                 <div class="post-options">
                     <button type="submit" class="post_button">Post</button>
                 </div>

@@ -5,10 +5,20 @@ def get_client():
 
 def create_post():
     client = get_client()
-    key = client.key('new_post')
+    key = client.key('post')
     return datastore.Entity(key)
 
 class PostsManager():
+     
+     def find_post(self, title):
+         """Queries for post by title"""
+         client = get_client()         
+         query = client.query(kind='new_post')
+         query.add_filter("title", "=", title)
+         post = None
+         for entity in query.fetch():
+             post = entity
+         return post
 
      def store_post(self, title, article):
         """Stores new posts"""

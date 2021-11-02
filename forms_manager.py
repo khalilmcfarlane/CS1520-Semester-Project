@@ -1,4 +1,4 @@
-from wtforms import Form, StringField, validators, TextAreaField
+from wtforms import Form, StringField, validators, TextAreaField, TextField, BooleanField
 from wtforms.validators import Required
 
 
