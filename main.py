@@ -45,22 +45,24 @@ def login():
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
-    form = NewPostForm(flask.request.form)
+    #form = NewPostForm(flask.request.form)
     if flask.request.method == 'POST':
-        title = form.title.data
-        article = form.article.data
+        title = flask.request.form['title']
+        article = flask.request.form['article']
+        #title = form.title.data
+        #article = form.article.data
 
         #if title and article:
         post.store_post(title, article)
-        return redirect('/post', title)
+        return redirect(url_for('display_post', title))
     
-    return flask.render_template("createpost.html", form=form)
+    return flask.render_template("createpost.html")
 
 
 @app.route('/post')
 def display_post(title):
     message = post.find_post(title)
-    return render_template('create-post.html', title=message.title, article=message.article)
+    return render_template('post.html', title=message.title, article=message.article)
 
 
 
