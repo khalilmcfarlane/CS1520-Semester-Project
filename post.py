@@ -13,7 +13,7 @@ class PostsManager():
      def find_post(self, title):
          """Queries for post by title"""
          client = get_client()         
-         query = client.query(kind='new_post')
+         query = client.query(kind='post')
          query.add_filter("title", "=", title)
          post = None
          for entity in query.fetch():

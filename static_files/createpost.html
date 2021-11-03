@@ -22,26 +22,10 @@
         
         <div class="post">
             <div class="post_header">
-                <!--
-                     <div class="subject">Subject</div>
-                    <button onclick="selectSubject()" class="dropbtn"> </button>
-                    <div id="subjectList" class="dropdown_content"> 
-                        <ul> 
-                            <li<p>Sports</p></li>
-                            <li><p>News</p></li>
-                            <li><p>Art</p></li>
-                            <li><p>Food</p></li>
-                            <li><p>Media</p></li>
-                            <li<p>School</p></li>
-                            <li<p>Other</p></li>
-                        </ul>
-                    </div>
-                </div>
-                -->
 
-               <form method="post" name="post_form">
+                <form method="post" action="/create" id="post_form">
                 <input type="text" class="title" name="title" placeholder="Blog title"/>
-                <input name="content" class="article" placeholder="Start writing here"/>
+                <input name="article" class="article" placeholder="Put your post here!"/>
                 <div class="post-options">
                     <button type="submit" class="post_button">Post</button>
                 </div>

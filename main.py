@@ -54,15 +54,17 @@ def create_post():
 
         #if title and article:
         post.store_post(title, article)
-        return redirect(url_for('display_post', title))
+        return redirect('/post/%s' %title)
     
     return flask.render_template("createpost.html")
 
 
-@app.route('/post')
+@app.route('/post/<title>/')
 def display_post(title):
     message = post.find_post(title)
-    return render_template('post.html', title=message.title, article=message.article)
+    title = message['title']
+    article = message['article']
+    return render_template('post.html', title=title, article=article)
 
 
 
