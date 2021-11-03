@@ -2,14 +2,14 @@ runtime: python39
 
 handlers:
 - url: /s
-  static_dir: static_files
+  static_dir: static
 
 - url: /scripts
-  static_dir: static_files/js
+  static_dir: static/js
   
 - url: /favicon.ico
-  static_files: static_files/images/favicon_io/favicon-32x32.png
-  upload: static_files/images/favicon_io/favicon-32x32.png
+  static: static/images/favicon_io/favicon-32x32.png
+  upload: static/images/favicon_io/favicon-32x32.png
 
 - url: /.*
   script: auto
