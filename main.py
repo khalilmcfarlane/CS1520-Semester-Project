@@ -13,7 +13,7 @@ client = datastore.Client()
 
 @app.route('/')
 def root():
-    return flask.redirect("/s/index.html", code=302)
+    return flask.redirect("/s/main.html", code=302)
 
 @app.route('/send', methods=['POST','GET'])
 def register_user():

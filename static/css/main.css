@@ -114,3 +114,7 @@ nav a:hover::before
     justify-content: center;
 }
 
+.categories {
+    text-decoration: none;
+    color: whitesmoke;
+}
