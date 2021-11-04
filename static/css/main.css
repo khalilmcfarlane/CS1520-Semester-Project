@@ -3,6 +3,7 @@ body
     background-color: #61A9FA;
     color: white;
     display: flex;
+    font-family: 'Arvo', serif;
     flex-direction: column;
     float: left;
 }
