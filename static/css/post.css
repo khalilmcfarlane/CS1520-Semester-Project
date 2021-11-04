@@ -6,9 +6,6 @@ nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    /*
-    background-color: #3f37c9;
-    */
 }
 
 nav {
@@ -50,34 +47,43 @@ nav a::before {
     transition: all ease-in-out 250ms;
   }
   
-  nav a:hover::before {
+nav a:hover::before {
     width: 100%;
   }
 
+.post {
+    background-color: whitesmoke;
+    width: 50px;
+    min-width: 600px;
+    height: 600px;
+    display: block;
+    margin: auto;
+    padding-left: 30px;
+    border-radius: 25px;
+}
+
 .title,
 .content {
-    width: 100%;
-    min-height: 100px;
+
     height: auto;
     outline: none;
     font-size: 50px;
-    font-weight: 600;
-    color: #2d2d2d;
+    color: #212121;
     resize: none;
-    border: none;
-    margin-top: 30px;
+    margin-top: 70px;
+    margin-right: 25px;
     padding: 15px;
-    border-radius: 10px;
+}
+
+.title {
+    font-size: 50px;
+    text-align: center;
 }
 
 
 .content {
-    height: 200px;
-    font-size: 20px;
+    font-size: 30px;
     margin-top: 20px;
-    line-height: 30px;
     font-weight: 500;
     padding-bottom: 100px;
-    white-space: pre-wrap;
 }
-

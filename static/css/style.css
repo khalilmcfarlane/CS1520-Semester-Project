@@ -6,9 +6,6 @@ nav ul {
     margin: 0;
     padding: 0;
     list-style: none;
-    /*
-    background-color: #3f37c9;
-    */
 }
 
 nav {
@@ -54,9 +51,3 @@ nav a::before {
     width: 100%;
   }
   
-/*
-html {
-    font-family: 'Arvo', serif;
-    background-color: #edf6f9;
-}
-*/

@@ -3,7 +3,6 @@ import user
 import post
 from google.cloud import datastore
 from flask import flash, redirect, render_template, request, url_for
-from forms_manager import *
 um = user.User_manager()
 post = post.PostsManager()
 
@@ -45,14 +44,9 @@ def login():
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
-    #form = NewPostForm(flask.request.form)
     if flask.request.method == 'POST':
         title = flask.request.form['title']
         article = flask.request.form['article']
-        #title = form.title.data
-        #article = form.article.data
-
-        #if title and article:
         post.store_post(title, article)
         return redirect('/post/%s' %title)
     
