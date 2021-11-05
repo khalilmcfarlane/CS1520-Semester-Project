@@ -56,7 +56,7 @@ def create_post():
 
 @app.route('/post/<title>/')
 def display_post(title):
-    message = post.find_post(title)
+    message = post.query_post_by_title(title)
     title = message['title']
     article = message['article']
     return render_template('post.html', title=title, article=article)
