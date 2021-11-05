@@ -46,22 +46,29 @@ def login():
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
     if flask.request.method == 'POST':
+        username = flask.request.form['username']
         title = flask.request.form['title']
         article = flask.request.form['article']
-        post.store_post(title, article)
-        return redirect('/post/%s' %title)
+        post.store_post(username, title, article)
+        return redirect('/post/%s/%s' % (username, title))
     
     return flask.render_template("createpost.html")
 
 
-@app.route('/post/<title>/')
+@app.route('/post/<username><title>/')
 def display_post(title):
     message = post.query_post_by_title(title)
     title = message['title']
     article = message['article']
     return render_template('post.html', title=title, article=article)
 
-
+@app.route('/profile/posts/<username>/')
+def display_user_posts(username):
+    message = post.query_post_by_username(username)
+    username = message['username']
+    title = message['title']
+    article = message['article']
+    return render_template('userposts.html', username=username, title=title, article=article)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)

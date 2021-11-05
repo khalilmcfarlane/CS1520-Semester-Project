@@ -1,0 +1,160 @@
+body {
+    background-color: #61A9FA;
+}
+
+nav ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+nav {
+    width: 100%;
+    height: 10px;
+    float: left;
+}
+
+nav li {
+    display: inline-block;
+    margin-left: 70px;
+    padding: 0px 20px;
+    position: relative;
+  }
+
+nav a {
+    font-size: 50px;
+    text-decoration: none;
+    font-family: 'Arvo', serif;
+    font-weight: 800;
+    color: whitesmoke;
+}
+
+
+nav a:hover{
+    color: #9bb9b9;
+}
+
+nav a::before {
+    content: '';
+    display: block;
+    height: 5px;
+    background-color: #FEECD4;
+  
+    position: absolute;
+    top: 0;
+    width: 0%;
+  
+    transition: all ease-in-out 250ms;
+  }
+  
+  nav a:hover::before {
+    width: 100%;
+  }
+
+  .post {
+    width: 50vw;
+    min-width: 400px;
+    height: 100px;
+    display: block;
+    margin: auto;
+    padding: 50px 0;
+}
+
+
+
+.title,
+.article {
+    width: 100%;
+    min-height: 100px;
+    height: auto;
+    outline: none;
+    font-size: 50px;
+    font-weight: 600;
+    color: #2d2d2d;
+    resize: none;
+    border: none;
+    margin-top: 30px;
+    border-radius: 10px;
+}
+
+.title::placeholder,
+.article::placeholder {
+    color: #383838;
+}
+
+.title::placeholder {
+    font-size: 35px;
+    text-align: center;
+}
+
+.article::placeholder {
+    font-size: 40px;
+    text-align: center;
+}
+::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: transparent;
+  }
+  ::-moz-placeholder { /* Firefox 19+ */
+    color: transparent;
+  }
+  :-ms-input-placeholder { /* IE 10+ */
+    color: transparent;
+  }
+  :-moz-placeholder { /* Firefox 18- */
+    color: transparent;
+  }
+  :hover::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+    color: #9bb9b9;
+  }
+  :hover::-moz-placeholder { /* Firefox 19+ */
+    color: #9bb9b9;
+  }
+  :hover:-ms-input-placeholder { /* IE 10+ */
+    color: #9bb9b9;
+  }
+  :hover:-moz-placeholder { /* Firefox 18- */
+    color: #9bb9b9;
+  }
+
+.title {
+    border-radius: 25px;
+}
+
+.article {
+    height: 400px;
+    font-size: 20px;
+    margin-top: 20px;
+    line-height: 30px;
+    font-weight: 500;
+    padding-bottom: 100px;
+    white-space: pre-wrap;
+}
+
+input {
+    text-align: center;
+}
+
+.post-options {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: #61A9FA;
+    z-index: 9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.post_button {
+    background-color: #61A9FA;
+    color: whitesmoke;
+    font-size: 40px;
+    border-radius: 30px;
+    padding: 10px;
+}
+
+.post_button:hover {
+    color: #9bb9b9;
+}

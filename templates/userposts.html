@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create Post</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="./css/create-post.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="./images/favicon_io/site.webmanifest">
+        <script src="./js/select_subject.js"></script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a class="homepage" href="main.html">Crowd</a></li>
+                <li><a class="login" href="login.html">Log In</a></li>
+                <li><a class="signup" href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+        
+        <div class="post">
+            <div class="post_header">
+
+                <form method="post" action="/create" id="post_form">
+                <input type="text" class="title" name="title" placeholder="Blog title"/>
+                <textarea name="article" class="article" placeholder="Put your post here..."> </textarea>
+                <div class="post-options">
+                    <button type="submit" class="post_button">Post</button>
+                </div>
+               </form>
+              
+            </div>
+        </div>
+    </body>
+</html>
