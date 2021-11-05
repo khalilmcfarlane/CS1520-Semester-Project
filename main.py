@@ -31,6 +31,7 @@ def register_user():
 def login():
     username = flask.request.form['username']
     password = flask.request.form['password']
+    is_logged = True
     response = um.login(username, password) # register the new user
     print(response)
     if response == "User Not Found" or response == "Wrong Password":
@@ -40,7 +41,7 @@ def login():
     city = response['city'] 
     major = response['major'] 
     school = response['school']
-    return flask.render_template("profile.html", username = username, age = age, city = city, major = major, school = school)
+    return flask.render_template("profile.html", username = username, age = age, city = city, major = major, school = school, is_logged=is_logged)
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
