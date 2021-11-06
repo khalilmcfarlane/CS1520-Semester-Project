@@ -19,19 +19,15 @@
                 <li><a class="signup" href="signup.html">Sign Up</a></li>
             </ul>
         </nav>
-        
-        <div class="post">
-            <div class="post_header">
-
-                <form method="post" action="/create" id="post_form">
-                <input type="text" class="title" name="title" placeholder="Blog title"/>
-                <textarea name="article" class="article" placeholder="Put your post here..."> </textarea>
-                <div class="post-options">
-                    <button type="submit" class="post_button">Post</button>
-                </div>
-               </form>
-              
-            </div>
-        </div>
+        <h1 class="username"> {{username}} </h1>
+        <ul>
+            {% for post in article %}
+            <li>
+                {{title}}
+                <br>
+                {{post}}
+            </li>
+           {% endfor %}
+        </ul>
     </body>
 </html>
