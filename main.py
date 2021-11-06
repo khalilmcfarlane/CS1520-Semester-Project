@@ -24,6 +24,7 @@ def register_user():
     major = flask.request.form['major']
     school = flask.request.form['school']
     um.register(username, password, age, city, major, school) # register the new user
+    post.store_user(username) # Stores username in order to assoc. with post
     print("registered username", username)
     return flask.render_template("profile.html", username = username, age = age, city = city, major = major, school = school)
 
@@ -46,22 +47,20 @@ def login():
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
     if flask.request.method == 'POST':
-        username = flask.request.form['username']
         title = flask.request.form['title']
         article = flask.request.form['article']
-        post.store_post(username, title, article)
-        return redirect('/post/%s/%s/' % (username, title))
+        post.store_post(title, article)
+        return redirect('/post/%s/' % (title))
     
     return flask.render_template("createpost.html")
 
 
-@app.route('/post/<username>/<title>/')
-def display_post(username, title):
+@app.route('/post/<title>/')
+def display_post(title):
     message = post.query_post_by_title(title)
-    username = message['username']
     title = message['title']
     article = message['article']
-    return render_template('post.html', username=username, title=title, article=article)
+    return render_template('post.html', title=title, article=article)
 
 @app.route('/profile/posts/<username>/')
 def display_user_posts(username):
