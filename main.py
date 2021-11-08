@@ -62,7 +62,7 @@ def display_post(title):
     article = message['article']
     return render_template('post.html', title=title, article=article)
 
-@app.route('/profile/posts/<username>/')
+@app.route('/profile/posts/')
 def display_user_posts(username):
     message = post.query_post_by_username(username)
     username = message['username']

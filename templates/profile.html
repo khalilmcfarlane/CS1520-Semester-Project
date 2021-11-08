@@ -25,9 +25,8 @@
         <a href="../static/login.html">Login</a>
         <a href="../static/signup.html">Sign-Up</a>
         <a href="../static/createpost.html">Create Post</a>
-        <form method="get" action="/profile/posts/<username>/" id="post_form">
-          <a href="userposts.html">Posts</a>
-        </form>
+        <a href="{{ url_for('display_user_posts', username=username) }}">{{username}}'s Profile</a> 
+
 
 
 
