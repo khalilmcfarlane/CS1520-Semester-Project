@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+
+
+    <head>
+        <title>Profile</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="s/css/style.css">
+        <link rel="stylesheet" href="s/css/navbar.css">
+        <link rel="stylesheet" href="s/css/search-filter.css">
+        <link rel="stylesheet" href="../static/css/profile.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="./images/favicon_io/site.webmanifest">
+        <script src="s/js/navbar.js"></script>
+        <script src="s/js/search-filter.js"></script>
+    </head>
+
+    <body>
+    <!---##################################################################################-->
+    <div class="navbar">
+        <a href="../static/main.html">Home</a>
+        <a href="../static/login.html">Login</a>
+        <a href="../static/signup.html">Sign-Up</a>
+        <a href="../static/createpost.html">Create Post</a>
+        <a href="{{ url_for('display_user_posts', username=username) }}">{{username}}'s Profile</a> 
+
+
+
+
+        <div class="dropdown">
+            <button class="dropbtn" onclick="myFuncti()">Friends
+              <i class="fa fa-caret-down"></i>
+            </button>
+                <div class="dropdown-content" id="Friends">
+                <a href="/add">Add Friends</a>
+                <a href="/viewfriends">View Friends List</a>
+                </div>
+        </div> 
+
+
+
+        <div class="dropdown">
+        <button class="dropbtn" onclick="myFunct()">Posts
+          <i class="fa fa-caret-down"></i>
+        </button>
+            <div class="dropdown-content" id="myDropdown">
+            <a href="/posts/sports">Sports</a>
+            <a href="/posts/news">News</a>
+            <a href="/posts/art">Art</a>
+            <a href="/posts/food">Food</a>
+            <a href="/posts/media">Media</a>
+            <a href="/posts/school">School</a>
+            <a href="/posts/other">Other</a>
+            </div>
+        </div> 
+    </div>
+    <!---##################################################################################-->
+    <div class="container">
+        <div class="main-body">
+        
+              <div class="row gutters-sm">
+                <div class="col-md-8">
+                  <div class="card mb-3">
+                    <div class="card-body">
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Name</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <td>{{username}}</td>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Age</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <td>{{age}}</td>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">School</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <td>{{school}}</td>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">City</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <td>{{city}}</td>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-3">
+                          <h6 class="mb-0">Major</h6>
+                        </div>
+                        <div class="col-sm-9 text-secondary">
+                            <td>{{major}}</td>
+                        </div>
+                      </div>
+                      <hr>
+                      <div class="row">
+                        <div class="col-sm-12">
+                          <a class="btn btn-info " target="__blank" href="https://8080-cs-564815598873-default.cs-us-east1-vpcf.cloudshell.dev/s/login.html">Edit</a>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+    
+    
+    
+                </div>
+              </div>
+    
+            </div>
+        </div>
+    <!---########################################################################################-->
+
+    <!---########################################################################################-->
+    <ul>
+        {% for messages in message %}
+        <li>
+            {{ messages['title'] }}
+            <br>
+            {{ messages['article'] }}
+        </li>
+       {% endfor %}
+    </ul>
+    
+    </body> 
+</html>
