@@ -41,9 +41,10 @@ class PostsManager():
           return post                
 
 
-     def store_post(self, title, article):
+     def store_post(self, username, title, article):
         """Stores new posts"""
         blog = create_post()
+        blog['username'] = username
         blog['title'] = title
         blog['article'] = article
         client = get_client()

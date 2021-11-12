@@ -24,7 +24,7 @@ def register_user():
     major = flask.request.form['major']
     school = flask.request.form['school']
     um.register(username, password, age, city, major, school) # register the new user
-    post.store_user(username)
+    # post.store_user(username)
     print("registered username", username)
     return flask.render_template("profile.html", username=username, age=age, city=city, major=major, school=school)
 
@@ -48,9 +48,10 @@ def login():
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
     if flask.request.method == 'POST':
+        username = flask.request.form['username']
         title = flask.request.form['title']
         article = flask.request.form['article']
-        post.store_post(title, article)
+        post.store_post(username, title, article)
         return redirect('/post/%s/' % (title))
     
     return flask.render_template("createpost.html")
