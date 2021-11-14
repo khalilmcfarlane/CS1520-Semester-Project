@@ -70,7 +70,7 @@ def display_user_posts(username):
     username = message['username']
     title = message['title']
     article = message['article']
-    return render_template('userposts.html', username=username, title=title, article=article)
+    return render_template('userposts.html', message=message)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
