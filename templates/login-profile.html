@@ -128,15 +128,16 @@
     <!---########################################################################################-->
 
     <!---########################################################################################-->
+    <div>
     <ul>
-        {% for messages in message %}
+        {% for message in messages %}
         <li>
-            {{ messages['title'] }}
+            {{ message['title'] }}
             <br>
-            {{ messages['article'] }}
+            {{ message['article'] }}
         </li>
        {% endfor %}
     </ul>
-    
+    </div>
     </body> 
 </html>

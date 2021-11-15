@@ -14,11 +14,8 @@ class PostsManager():
          '''Generic post query function'''
          client = get_client()
          query = client.query(kind='post')
-         post = None
-         for entity in query.fetch():
-             post = entity
+         post = list(query.fetch())
          return post
-
      
      def query_post_by_title(self, title):
          """Queries for post by title"""
@@ -35,10 +32,8 @@ class PostsManager():
           client = get_client()         
           query = client.query(kind='post')
           query.add_filter("username", "=", username)
-          post = None
-          for entity in query.fetch():
-             post = entity
-          return post                
+          post = list(query.fetch())
+          return post              
 
 
      def store_post(self, username, title, article):
