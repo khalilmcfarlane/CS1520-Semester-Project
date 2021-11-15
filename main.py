@@ -52,13 +52,13 @@ def create_post():
         title = flask.request.form['title']
         article = flask.request.form['article']
         post.store_post(username, title, article)
-        return redirect('/post/%s/' % (title))
+        return redirect('/post/%s/%s/' % (username, title))
     
     return flask.render_template("createpost.html")
 
 
-@app.route('/post/<title>/')
-def display_post(title):
+@app.route('/posts/<username>/<title>/')
+def display_post(username, title):
     message = post.query_post_by_title(title)
     title = message['title']
     article = message['article']
@@ -67,9 +67,9 @@ def display_post(title):
 @app.route('/profile/posts/')
 def display_user_posts(username):
     message = post.query_post_by_username(username)
-    username = message['username']
-    title = message['title']
-    article = message['article']
+    #username = message['username']
+    #title = message['title']
+    #article = message['article']
     return render_template('userposts.html', message=message)
 
 if __name__ == '__main__':
