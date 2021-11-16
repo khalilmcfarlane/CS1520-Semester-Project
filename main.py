@@ -52,7 +52,7 @@ def create_post():
         title = flask.request.form['title']
         article = flask.request.form['article']
         post.store_post(username, title, article)
-        return redirect('/post/%s/%s/' % (username, title))
+        return redirect('/posts/%s/%s/' % (username, title))
     
     return flask.render_template("createpost.html")
 
