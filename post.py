@@ -10,7 +10,14 @@ def create_post():
 
 class PostsManager():
      
-     def find_post(self, title):
+     def query_posts(self):
+         '''Generic post query function'''
+         client = get_client()
+         query = client.query(kind='post')
+         post = list(query.fetch())
+         return post
+     
+     def query_post_by_title(self, title):
          """Queries for post by title"""
          client = get_client()         
          query = client.query(kind='post')
@@ -20,11 +27,28 @@ class PostsManager():
              post = entity
          return post
 
-     def store_post(self, title, article, tag):
+     def query_post_by_username(self, username):
+          """Queries for all posts from specific user"""
+          client = get_client()         
+          query = client.query(kind='post')
+          query.add_filter("username", "=", username)
+          post = list(query.fetch())
+          return post              
+
+
+     def store_post(self, username, title, article, tag):
         """Stores new posts"""
         blog = create_post()
+        blog['username'] = username
         blog['title'] = title
         blog['article'] = article
         blog['tag'] = tag
+        client = get_client()
+        client.put(blog)
+    
+     def store_user(self, username):
+        """Associates user with post: Used when user needs to see all posts"""
+        blog = create_post()
+        blog['username'] = username
         client = get_client()
         client.put(blog)

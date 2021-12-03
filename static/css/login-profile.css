@@ -1,25 +1,10 @@
 body{
     margin-top:20px;
-    color: #000000;
     text-align: left;
     background-color: #61A9FA; 
     font-family: 'Arvo', serif;
     font-size: 16px;    
 }
-
-ul.posts {
-    list-style: none;
-    font-size: 30px;
-    color: whitesmoke;
-}
-
-.post-header {
-    align-content: center;
-    text-align: center;
-    font-size: 50px;
-    color: whitesmoke;
-}
-
 .main-body {
     padding: 15px;
 }
@@ -45,6 +30,9 @@ ul.posts {
     padding: 1rem;
 }
 
+.container {
+    color: black;
+}
 .gutters-sm {
     margin-right: 1000px;
     margin-left: -8px;
@@ -66,4 +54,16 @@ ul.posts {
 }
 .shadow-none {
     box-shadow: none!important;
+}
+
+ul.posts {
+    list-style: none;
+    font-size: 30px;
+    color: whitesmoke;
+}
+
+.post-header {
+    text-align: center;
+    font-size: 50px;
+    color: whitesmoke;
 }

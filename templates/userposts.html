@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Create Post</title>
+        <meta charset="utf-8">
+        <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="s/css/create-post.css">
+        <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon_io/apple-touch-icon.png">
+        <link rel="icon" type="image/png" sizes="32x32" href="s/images/favicon_io/favicon-32x32.png">
+        <link rel="icon" type="image/png" sizes="16x16" href="./images/favicon_io/favicon-16x16.png">
+        <link rel="manifest" href="./images/favicon_io/site.webmanifest">
+        <script src="./js/select_subject.js"></script>
+    </head>
+    <body>
+        <nav>
+            <ul>
+                <li><a class="homepage" href="main.html">Crowd</a></li>
+                <li><a class="login" href="login.html">Log In</a></li>
+                <li><a class="signup" href="signup.html">Sign Up</a></li>
+            </ul>
+        </nav>
+        <h1 class="username"> {{username}} </h1>
+        <ul>
+            {% for post in article %}
+            <li>
+                {{title}}
+                <br>
+                {{post}}
+            </li>
+           {% endfor %}
+        </ul>
+    </body>
+</html>
