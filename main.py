@@ -56,7 +56,8 @@ def create_post():
             username = session['username']
             title = flask.request.form['title']
             article = flask.request.form['article']
-            post.store_post(username, title, article)
+            tag = flask.request.form['tag']
+            post.store_post(username, title, article, tag)
             return redirect('/posts/%s/%s/' % (username, title))
         else:
              return redirect(url_for('login'))

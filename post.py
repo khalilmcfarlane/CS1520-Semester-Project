@@ -28,7 +28,7 @@ class PostsManager():
          return post
 
      def query_post_by_username(self, username):
-          """Queries for post by user"""
+          """Queries for all posts from specific user"""
           client = get_client()         
           query = client.query(kind='post')
           query.add_filter("username", "=", username)
@@ -36,12 +36,13 @@ class PostsManager():
           return post              
 
 
-     def store_post(self, username, title, article):
+     def store_post(self, username, title, article, tag):
         """Stores new posts"""
         blog = create_post()
         blog['username'] = username
         blog['title'] = title
         blog['article'] = article
+        blog['tag'] = tag
         client = get_client()
         client.put(blog)
     
