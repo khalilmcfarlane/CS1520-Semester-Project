@@ -20,10 +20,11 @@ class PostsManager():
              post = entity
          return post
 
-     def store_post(self, title, article):
+     def store_post(self, title, article, tag):
         """Stores new posts"""
         blog = create_post()
         blog['title'] = title
         blog['article'] = article
+        blog['tag'] = tag
         client = get_client()
         client.put(blog)

@@ -47,7 +47,8 @@ def create_post():
     if flask.request.method == 'POST':
         title = flask.request.form['title']
         article = flask.request.form['article']
-        post.store_post(title, article)
+        tag = flask.request.form['tag']
+        post.store_post(title, article, tag)
         return redirect('/post/%s' %title)
     
     return flask.render_template("createpost.html")

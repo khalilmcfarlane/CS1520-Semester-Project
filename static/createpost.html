@@ -26,6 +26,22 @@
                 <form method="post" action="/create" id="post_form">
                 <input type="text" class="title" name="title" placeholder="Blog title"/>
                 <textarea name="article" class="article" placeholder="Put your post here..."> </textarea>
+                <div class = "radio">
+                    <p>Choose a tag for your post:</p>
+                    <input type="radio" id="sports" name="tag" value="sports">
+                    <label for="sports">Sports</label>
+                    <input type="radio" id="news" name="tag" value="news">
+                    <label for="news">News</label>
+                    <input type="radio" id="media" name="tag" value="media">
+                    <label for="media">Media</label>
+                    <input type="radio" id="school" name="tag" value="school">
+                    <label for="school">School</label>
+                    <input type="radio" id="food" name="tag" value="food">
+                    <label for="food">Food</label>
+                    <input type="radio" id="other" name="tag" value="other">
+                    <label for="other">Other</label>
+                </div>
+                
                 <div class="post-options">
                     <button type="submit" class="post_button">Post</button>
                 </div>
