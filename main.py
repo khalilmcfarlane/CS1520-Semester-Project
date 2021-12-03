@@ -2,7 +2,7 @@ import flask
 import user
 import post
 from google.cloud import datastore
-from flask import flash, redirect, render_template, request, url_for
+from flask import flash, redirect, render_template, request, url_for, session
 um = user.User_manager()
 post = post.PostsManager()
 
@@ -23,6 +23,8 @@ def register_user():
     city = flask.request.form['city']
     major = flask.request.form['major']
     school = flask.request.form['school']
+    session['username'] = username
+
     um.register(username, password, age, city, major, school) # register the new user
     # post.store_user(username)
     print("registered username", username)
@@ -33,11 +35,13 @@ def login():
     username = flask.request.form['username']
     password = flask.request.form['password']
     is_logged = True
+
     response = um.login(username, password) # register the new user
     print(response)
     if response == "User Not Found" or response == "Wrong Password":
         error = "User Not Found"
         return flask.render_template('error.html', error=error)
+    session['username'] = username
     age = response['age'] 
     city = response['city'] 
     major = response['major'] 
@@ -48,12 +52,14 @@ def login():
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
     if flask.request.method == 'POST':
-        username = flask.request.form['username']
-        title = flask.request.form['title']
-        article = flask.request.form['article']
-        post.store_post(username, title, article)
-        return redirect('/posts/%s/%s/' % (username, title))
-    
+        if 'username' in session:
+            username = session['username']
+            title = flask.request.form['title']
+            article = flask.request.form['article']
+            post.store_post(username, title, article)
+            return redirect('/posts/%s/%s/' % (username, title))
+        else:
+             return redirect(url_for('login'))
     return flask.render_template("createpost.html")
 
 
@@ -67,9 +73,6 @@ def display_post(username, title):
 @app.route('/profile/posts/')
 def display_user_posts(username):
     message = post.query_post_by_username(username)
-    #username = message['username']
-    #title = message['title']
-    #article = message['article']
     return render_template('userposts.html', message=message)
 
 if __name__ == '__main__':
