@@ -34,18 +34,18 @@ def register_user():
 def login():
     username = flask.request.form['username']
     password = flask.request.form['password']
-    is_logged = True
 
     response = um.login(username, password) # register the new user
     print(response)
     if response == "User Not Found" or response == "Wrong Password":
-        error = "User Not Found"
-        return flask.render_template('error.html', error=error)
+        #error = "User Not Found"
+        return redirect('/s/login.html')
     session['username'] = username
     age = response['age'] 
     city = response['city'] 
     major = response['major'] 
     school = response['school']
+    is_logged = True
     messages = post.query_post_by_username(username)
     return flask.render_template("login-profile.html", username=username, age=age, city=city, major=major, school=school, is_logged=is_logged, messages=messages)
 

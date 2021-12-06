@@ -67,3 +67,11 @@ ul.posts {
 .shadow-none {
     box-shadow: none!important;
 }
+
+.col-md-8 {
+    width: 350px;
+}
+
+.mb-0 {
+    font-size: 15px;
+}
