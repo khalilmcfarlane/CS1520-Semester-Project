@@ -26,9 +26,9 @@ class User_manager():
 
     def register(self, username, password, age, city, major, school):
         """Register a new user"""
-        user = self.find_user(username)
-        if user is not None:
-            return "Username is taken"
+        # user = self.find_user(username)
+        # if user is not None:
+        #     return "Username is taken"
 
         user = create_user()
         user['username'] = username
