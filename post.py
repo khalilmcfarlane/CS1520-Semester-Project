@@ -1,7 +1,6 @@
 from google.cloud import datastore
 
 
-
 def get_client():
     return datastore.Client()
 
@@ -43,7 +42,7 @@ class PostsManager():
         defaultPost = {}
         defaultsPosts = []
         if self.countOfPosts == 0:
-            defaultPost['article'] = 'no posts yet'
+            defaultPost['article'] = 'No posts yet'
             defaultPost['username'] = 'n/a'
             defaultPost['title'] = 'no title'
             defaultsPosts.append(defaultPost)
@@ -51,6 +50,7 @@ class PostsManager():
         
         posts = list(query.fetch())
         return posts
+        
      def query_post_by_username(self, username):
           """Queries for all posts from specific user"""
           client = get_client()         
@@ -66,3 +66,34 @@ class PostsManager():
         blog['username'] = username
         client = get_client()
         client.put(blog)
+
+     def query_posts(self):
+
+        '''Generic post query function'''
+
+        client = get_client()
+
+        query = client.query(kind='post')
+
+        post = list(query.fetch())
+
+        return post
+
+     def query_post_by_title(self, title):
+
+        """Queries for post by title"""
+
+        client = get_client()        
+
+        query = client.query(kind='post')
+
+        query.add_filter("title", "=", title)
+
+        post = None
+
+        for entity in query.fetch():
+
+            post = entity
+
+        return post
+        
