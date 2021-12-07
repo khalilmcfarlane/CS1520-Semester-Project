@@ -5,7 +5,7 @@
         <meta charset="utf-8">
         <link href="https://fonts.googleapis.com/css2?family=Arvo&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="./css/search-filter.css">
-        <link rel="stylesheet" href="./css/main.css">
+        <link rel="stylesheet" href="{{ url_for('static', filename='css/main.css') }}">
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="apple-touch-icon" sizes="180x180" href="./images/favicon_io/apple-touch-icon.png">
         <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon_io/favicon-32x32.png">
@@ -16,10 +16,10 @@
     <body>
         <nav>
             <ul>
-                <li><a class="homepage" href="main.html">Crowd</a></li>
-                <li><a class="login" href="login.html">Log In</a></li>
-                <li><a class="signup" href="signup.html">Sign Up</a></li>
-                <li><a class="post" href="createpost.html">Create Post</a></li>
+                <li><a class="homepage" href="/">Crowd</a></li>
+                <li><a class="login" href="static/login.html">Log In</a></li>
+                <li><a class="signup" href="static/signup.html">Sign Up</a></li>
+                <li><a class="post" href="static/createpost.html">Create Post</a></li>
             </ul>
 
            
@@ -120,37 +120,12 @@
             </div>
             -->
             <div class="post1">
-                <h2>Josh Friedman</h2>
-                <p>My group had a wonderful time at Enter the Imaginarium. The escape room was really well put toghether and the puzzles were challenging. I can't wait to go back!</p>
-                <div class="stars">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                </div>
-                
-                <img src="images/imaginarium.jpg" alt="Group at Imaginarium">
-
-                <h2>Josh Friedman</h2>
-                <p>I love going to the Pittsburgh Zoo. The facilities are very nice and the animals are always so much fun to look at.</p>
-                <div class="stars">
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star checked"></span>
-                    <span class="fa fa-star "></span>
-                </div>
-                
-                <img src="images/zoo.jpeg" alt="Group at Imaginarium">
+                {%for post in posts%}
+                    <li>'Username: ' {{post['username']}}</li> 
+                    <li>'Title: ' {{post['title']}}</li>
+                    <li>'Content: '{{post['article']}}</li>                   
+                {%endfor%}
             </div>
-
-
-
         </div>
-
-        
-
     </body>
-
 </html>

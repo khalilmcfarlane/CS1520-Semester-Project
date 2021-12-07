@@ -23,6 +23,7 @@ class User_manager():
             user = entity
         return user
 
+
     def register(self, username, password, age, city, major, school):
         """Register a new user"""
         user = self.find_user(username)
