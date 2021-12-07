@@ -2,7 +2,7 @@ import flask
 import user
 import post
 from google.cloud import datastore
-from flask import flash, redirect, render_template, request, url_for
+from flask import flash, redirect, render_template, request, url_for, session
 um = user.User_manager()
 post = post.PostsManager()
 app = flask.Flask(__name__)
@@ -37,24 +37,31 @@ def register_user():
     city = flask.request.form['city']
     major = flask.request.form['major']
     school = flask.request.form['school']
+    session['username'] = username
+
     um.register(username, password, age, city, major, school) # register the new user
+    # post.store_user(username)
     print("registered username", username)
-    return flask.render_template("profile.html", username = username, age = age, city = city, major = major, school = school)
+    return flask.render_template("profile.html", username=username, age=age, city=city, major=major, school=school)
 
 @app.route('/login', methods=['POST','GET'])
 def login():
     username = flask.request.form['username']
     current_user.update_username(username)
     password = flask.request.form['password']
+
     response = um.login(username, password) # register the new user
     if response == "User Not Found" or response == "Wrong Password":
-        error = "User Not Found"
-        return flask.render_template('error.html', error=error)
+        #error = "User Not Found"
+        return redirect('/s/login.html')
+    session['username'] = username
     age = response['age'] 
     city = response['city'] 
     major = response['major'] 
     school = response['school']
-    return flask.render_template("profile.html", username = username, age = age, city = city, major = major, school = school)
+    is_logged = True
+    messages = post.query_post_by_username(username)
+    return flask.render_template("login-profile.html", username=username, age=age, city=city, major=major, school=school, is_logged=is_logged, messages=messages)
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
@@ -67,12 +74,21 @@ def create_post():
         post.return_posts()
         return redirect('/post/%s' %title)
     
+        if 'username' in session:
+            username = session['username']
+            title = flask.request.form['title']
+            article = flask.request.form['article']
+            tag = flask.request.form['tag']
+            post.store_post(username, title, article, tag)
+            return redirect('/posts/%s/%s/' % (username, title))
+        else:
+             return redirect(url_for('login'))
     return flask.render_template("createpost.html")
 
 
-@app.route('/post/<title>/')
-def display_post(title):
-    message = post.find_post(title)
+@app.route('/posts/<username>/<title>/')
+def display_post(username, title):
+    message = post.query_post_by_title(title)
     title = message['title']
     article = message['article']
     return render_template('post.html', title=title, article=article)
@@ -86,6 +102,10 @@ class Username():
     def return_username(self):
         return self.username
 
+@app.route('/profile/posts/')
+def display_user_posts(username):
+    message = post.query_post_by_username(username)
+    return render_template('userposts.html', message=message)
 
 if __name__ == '__main__':
     app.run(host='127.0.0.1', port=8080, debug=True)
