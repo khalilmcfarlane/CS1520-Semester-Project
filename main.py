@@ -65,24 +65,24 @@ def login():
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
-    if flask.request.method == 'POST':
+    # if flask.request.method == 'POST':
+    #     title = flask.request.form['title']
+    #     article = flask.request.form['article']
+    #     name = current_user.return_username()
+    #     print("This is the name mateeeeee" , name)
+    #     post.store_post(title, article, name)
+    #     post.return_posts()
+    #     return redirect('/post/%s' %title)
+    
+    if 'username' in session:
+        username = session['username']
         title = flask.request.form['title']
         article = flask.request.form['article']
-        name = current_user.return_username()
-        print("This is the name mateeeeee" , name)
-        post.store_post(title, article, name)
-        post.return_posts()
-        return redirect('/post/%s' %title)
-    
-        if 'username' in session:
-            username = session['username']
-            title = flask.request.form['title']
-            article = flask.request.form['article']
-            tag = flask.request.form['tag']
-            post.store_post(username, title, article, tag)
-            return redirect('/posts/%s/%s/' % (username, title))
-        else:
-             return redirect(url_for('login'))
+        tag = flask.request.form['tag']
+        post.store_post(title, article, username, tag)
+        return redirect('/posts/%s/%s/' % (username, title))
+    else:
+        return redirect(url_for('login'))
     return flask.render_template("createpost.html")
 
 
@@ -93,14 +93,14 @@ def display_post(username, title):
     article = message['article']
     return render_template('post.html', title=title, article=article)
 
-class Username():
-    def __init__(self):
-        self.username = "Guadalupe"
-    def update_username(self, user):
-        self.username = user
+#class Username():
+ #   def __init__(self):
+  #      self.username = "Guadalupe"
+   # def update_username(self, user):
+    #    self.username = user
 
-    def return_username(self):
-        return self.username
+   # def return_username(self):
+    #    return self.username
 
 @app.route('/profile/posts/')
 def display_user_posts(username):
