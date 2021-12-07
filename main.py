@@ -5,19 +5,33 @@ from google.cloud import datastore
 from flask import flash, redirect, render_template, request, url_for
 um = user.User_manager()
 post = post.PostsManager()
-
 app = flask.Flask(__name__)
 app.secret_key = "jdofewpjofawiejf"
 client = datastore.Client()
 
+class Username():
+    def __init__(self):
+        self.username = "Anonymous"
+    def update_username(self, user):
+        self.username = user
+
+    def return_username(self):
+        return self.username
+
+current_user = Username()
 
 @app.route('/')
 def root():
-    return flask.redirect("/s/main.html", code=302)
+    posts = post.return_posts()
+
+    if len(posts) == 0:
+        return flask.redirect("/")
+    return flask.render_template("main.html", posts = posts)
 
 @app.route('/send', methods=['POST','GET'])
 def register_user():
     username = flask.request.form['username']
+    current_user.update_username(username)
     password = flask.request.form['password']
     age = flask.request.form['age']
     city = flask.request.form['city']
@@ -30,9 +44,9 @@ def register_user():
 @app.route('/login', methods=['POST','GET'])
 def login():
     username = flask.request.form['username']
+    current_user.update_username(username)
     password = flask.request.form['password']
     response = um.login(username, password) # register the new user
-    print(response)
     if response == "User Not Found" or response == "Wrong Password":
         error = "User Not Found"
         return flask.render_template('error.html', error=error)
@@ -47,7 +61,10 @@ def create_post():
     if flask.request.method == 'POST':
         title = flask.request.form['title']
         article = flask.request.form['article']
-        post.store_post(title, article)
+        name = current_user.return_username()
+        print("This is the name mateeeeee" , name)
+        post.store_post(title, article, name)
+        post.return_posts()
         return redirect('/post/%s' %title)
     
     return flask.render_template("createpost.html")
@@ -60,6 +77,14 @@ def display_post(title):
     article = message['article']
     return render_template('post.html', title=title, article=article)
 
+class Username():
+    def __init__(self):
+        self.username = "Guadalupe"
+    def update_username(self, user):
+        self.username = user
+
+    def return_username(self):
+        return self.username
 
 
 if __name__ == '__main__':
