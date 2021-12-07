@@ -26,7 +26,7 @@ def root():
 
     if len(posts) == 0:
         return flask.redirect("/")
-    return flask.render_template("main.html", posts = posts)
+    return flask.render_template("main.html", posts=posts)
 
 @app.route('/send', methods=['POST','GET'])
 def register_user():
@@ -42,7 +42,7 @@ def register_user():
     um.register(username, password, age, city, major, school) # register the new user
     # post.store_user(username)
     print("registered username", username)
-    return flask.render_template("profile.html", username=username, age=age, city=city, major=major, school=school)
+    return flask.render_template("login-profile.html", username=username, age=age, city=city, major=major, school=school)
 
 @app.route('/login', methods=['POST','GET'])
 def login():
@@ -65,7 +65,7 @@ def login():
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
-    # if flask.request.method == 'POST':
+    if flask.request.method == 'POST':
     #     title = flask.request.form['title']
     #     article = flask.request.form['article']
     #     name = current_user.return_username()
@@ -74,15 +74,15 @@ def create_post():
     #     post.return_posts()
     #     return redirect('/post/%s' %title)
     
-    if 'username' in session:
-        username = session['username']
-        title = flask.request.form['title']
-        article = flask.request.form['article']
-        tag = flask.request.form['tag']
-        post.store_post(title, article, username, tag)
-        return redirect('/posts/%s/%s/' % (username, title))
-    else:
-        return redirect(url_for('login'))
+        if 'username' in session:
+            username = session['username']
+            title = flask.request.form['title']
+            article = flask.request.form['article']
+            tag = flask.request.form['tag']
+            post.store_post(title, article, username, tag)
+            return redirect('/posts/%s/%s/' % (username, title))
+        else:
+            return redirect(url_for('login'))
     return flask.render_template("createpost.html")
 
 

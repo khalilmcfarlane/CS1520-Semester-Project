@@ -31,7 +31,7 @@ class PostsManager():
         blog['article'] = article
         blog['username'] = username
         blog['tag'] = tag 
-        print(username)
+        #print(username)
         client = get_client()
         client.put(blog)
 
