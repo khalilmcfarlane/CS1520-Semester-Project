@@ -28,6 +28,64 @@ def root():
         return flask.redirect("/")
     return flask.render_template("main.html", posts=posts)
 
+@app.route('/sports')
+def filter_by_sports(tag):
+    posts = post.return_posts()
+    posts_filtered = [] 
+    for post in posts:
+        if post['tag'] == "sports":
+            posts_filtered.append(post)
+    return flask.render_template("tag-posts.html", posts = posts_filtered)
+
+@app.route('/news')
+def filter_by_news(tag):
+    posts = post.return_posts()
+    posts_filtered = [] 
+    for post in posts:
+        if post['tag'] == "news":
+            posts_filtered.append(post)
+    return flask.render_template("tag-posts.html", posts = posts_filtered)
+
+@app.route('/media')
+def filter_by_media(tag):
+    posts = post.return_posts()
+    posts_filtered = [] 
+    for post in posts:
+        if post['tag'] == "media":
+            posts_filtered.append(post)
+    return flask.render_template("tag-posts.html", posts = posts_filtered)
+
+@app.route('/school')
+def filter_by_school(tag):
+    posts = post.return_posts()
+    posts_filtered = [] 
+    for post in posts:
+        if post['tag'] == "school":
+            posts_filtered.append(post)
+    return flask.render_template("tag-posts.html", posts = posts_filtered)
+
+@app.route('/food')
+def filter_by_food(tag):
+    posts = post.return_posts()
+    posts_filtered = [] 
+    for post in posts:
+        if post['tag'] == "food":
+            posts_filtered.append(post)
+    return flask.render_template("tag-posts.html", posts = posts_filtered)
+
+@app.route('/other')
+def filter_by_other(tag):
+    posts = post.return_posts()
+    posts_filtered = [] 
+    for post in posts:
+        if post['tag'] == "other":
+            posts_filtered.append(post)
+    return flask.render_template("tag-posts.html", posts = posts_filtered)
+
+
+
+
+
 @app.route('/send', methods=['POST','GET'])
 def register_user():
     username = flask.request.form['username']
@@ -65,7 +123,6 @@ def login():
 
 @app.route('/create', methods=['GET', 'POST'])
 def create_post():
-    if flask.request.method == 'POST':
     #     title = flask.request.form['title']
     #     article = flask.request.form['article']
     #     name = current_user.return_username()
@@ -74,15 +131,15 @@ def create_post():
     #     post.return_posts()
     #     return redirect('/post/%s' %title)
     
-        if 'username' in session:
-            username = session['username']
-            title = flask.request.form['title']
-            article = flask.request.form['article']
-            tag = flask.request.form['tag']
-            post.store_post(title, article, username, tag)
-            return redirect('/posts/%s/%s/' % (username, title))
-        else:
-            return redirect(url_for('login'))
+    if 'username' in session:
+        username = session['username']
+        title = flask.request.form['title']
+        article = flask.request.form['article']
+        tag = flask.request.form['tag']
+        post.store_post(title, article, username, tag)
+        return redirect('/posts/%s/%s/' % (username, title))
+    else:
+        return redirect(url_for('login'))
     return flask.render_template("createpost.html")
 
 

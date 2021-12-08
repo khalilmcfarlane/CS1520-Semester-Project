@@ -42,7 +42,7 @@ class PostsManager():
         defaultPost = {}
         defaultsPosts = []
         if self.countOfPosts == 0:
-            defaultPost['article'] = 'no posts yet'
+            defaultPost['article'] = 'No posts yet'
             defaultPost['username'] = 'n/a'
             defaultPost['title'] = 'no title'
             defaultsPosts.append(defaultPost)
@@ -96,4 +96,4 @@ class PostsManager():
             post = entity
 
         return post
-
+        
