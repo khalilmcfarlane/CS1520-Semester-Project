@@ -119,3 +119,17 @@ nav a:hover::before
     text-decoration: none;
     color: whitesmoke;
 }
+
+div.post1 li {
+    background: whitesmoke;
+    color: black;
+    box-shadow: 20px 20px rgb(0 0 0 / 15%);
+    transition: all .4s ease;
+    border-radius: 3px;
+    border: 5px solid #61A9FA;
+}
+
+div.post1 li:hover {
+    border-radius: 0% 0% 50% 50% / 0% 0% 5% 5%;
+    box-shadow: 10px 10px rgb(0 0 0 / 25%);
+}
