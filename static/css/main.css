@@ -127,6 +127,7 @@ div.post1 li {
     transition: all .4s ease;
     border-radius: 3px;
     border: 5px solid #61A9FA;
+    list-style: none;
 }
 
 div.post1 li:hover {
