@@ -121,9 +121,13 @@
             -->
             <div class="post1">
                 {%for post in posts%}
-                    <li>Username:  {{post['username']}}</li> 
-                    <li>Title:  {{post['title']}}</li>
-                    <li>Content: {{post['article']}}</li>                   
+                <li>
+                  Username:  {{post['username']}}
+                  <br>
+                  Title:  {{post['title']}}
+                  <br>
+                  Content: {{post['article']}}
+              </li>                        
                 {%endfor%}
             </div>
         </div>
