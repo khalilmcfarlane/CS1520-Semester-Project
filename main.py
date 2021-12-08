@@ -20,68 +20,71 @@ class Username():
 
 current_user = Username()
 
+def return_posts():
+    posts = post.return_posts()
+    return posts
+
 @app.route('/')
 def root():
-    posts = post.return_posts()
+    posts = return_posts()
 
     if len(posts) == 0:
         return flask.redirect("/")
     return flask.render_template("main.html", posts=posts)
 
 @app.route('/sports')
-def filter_by_sports(tag):
-    posts = post.return_posts()
+def filter_by_sports():
+    posts = return_posts()
     posts_filtered = [] 
     for post in posts:
         if post['tag'] == "sports":
             posts_filtered.append(post)
-    return flask.render_template("tag-posts.html", posts=posts_filtered)
+    return flask.render_template("sports.html", posts = posts_filtered)
 
 @app.route('/news')
-def filter_by_news(tag):
-    posts = post.return_posts()
+def filter_by_news():
+    posts = return_posts()
     posts_filtered = [] 
     for post in posts:
         if post['tag'] == "news":
             posts_filtered.append(post)
-    return flask.render_template("tag-posts.html", posts=posts_filtered)
+    return flask.render_template("news.html", posts = posts_filtered)
 
 @app.route('/media')
-def filter_by_media(tag):
-    posts = post.return_posts()
+def filter_by_media():
+    posts = return_posts()
     posts_filtered = [] 
     for post in posts:
         if post['tag'] == "media":
             posts_filtered.append(post)
-    return flask.render_template("tag-posts.html", posts=posts_filtered)
+    return flask.render_template("media.html", posts = posts_filtered)
 
 @app.route('/school')
-def filter_by_school(tag):
-    posts = post.return_posts()
+def filter_by_school():
+    posts = return_posts()
     posts_filtered = [] 
     for post in posts:
         if post['tag'] == "school":
             posts_filtered.append(post)
-    return flask.render_template("tag-posts.html", posts = posts_filtered)
+    return flask.render_template("school.html", posts = posts_filtered)
 
 @app.route('/food')
-def filter_by_food(tag):
-    posts = post.return_posts()
+def filter_by_food():
+    posts = return_posts()
     posts_filtered = [] 
     for post in posts:
         if post['tag'] == "food":
             posts_filtered.append(post)
-    return flask.render_template("tag-posts.html", posts=posts_filtered)
+    return flask.render_template("food.html", posts = posts_filtered)
 
 @app.route('/other')
-def filter_by_other(tag):
-    posts = post.return_posts()
+def filter_by_other():
+    posts = return_posts()
     posts_filtered = [] 
     for post in posts:
         if post['tag'] == "other":
             posts_filtered.append(post)
-    return flask.render_template("tag-posts.html", posts=posts_filtered)
-
+    return flask.render_template("other.html", posts = posts_filtered)
 
 
 
