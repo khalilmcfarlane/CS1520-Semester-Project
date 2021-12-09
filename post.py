@@ -45,7 +45,7 @@ class PostsManager():
             defaultPost['article'] = 'No posts yet'
             defaultPost['username'] = 'n/a'
             defaultPost['title'] = 'no title'
-            defaultPost['tag] = 'other'
+            defaultPost['tag'] = 'other'
             defaultsPosts.append(defaultPost)
             return defaultsPosts
         
